@@ -108,64 +108,12 @@
 
                     </div>
                 </div>
-                <div class="card-body">
-                    <canvas id="myChart" height="182"></canvas>
-                    <div class="statistic-details mt-sm-4">
-                        <div class="statistic-details-item">
-                            <span class="text-muted">{{ $todaySales }}</span>
-                            <div class="detail-value">{{ price($todaySum) }}</div>
-                            <div class="detail-name">{{ __lang('today-sales') }}</div>
-                        </div>
-                        <div class="statistic-details-item">
-                            <span class="text-muted">{{ $weekSales }}</span>
-                            <div class="detail-value">{{ price($weekSum) }}</div>
-                            <div class="detail-name">{{ __lang('week-sales') }}</div>
-                        </div>
-                        <div class="statistic-details-item">
-                            <span class="text-muted">{{ $monthSales }}</span>
-                            <div class="detail-value">{{ price($monthSum) }}</div>
-                            <div class="detail-name">{{ __lang('month-sales') }}</div>
-                        </div>
-                        <div class="statistic-details-item">
-                            <span class="text-muted">{{ $yearSales }}</span>
-                            <div class="detail-value">{{ price($yearSum) }}</div>
-                            <div class="detail-name">{{ __lang('year-sales') }}</div>
-                        </div>
-                    </div>
-                </div>
+                 
             </div>
         </div>
         @endcan
 
-        @can('access','view_discussions')
-        <div class="col-lg-4 col-md-12 col-12 col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>{{__lang('discussions')}}</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled list-unstyled-border">
-                        @foreach($discuss['paginator'] as $row)
-                        <li class="media">
-                            <img class="mr-3 rounded-circle" width="50" src="{{ profilePictureUrl($row->picture) }}" alt="avatar">
-                            <div class="media-body">
-                                <div class="float-right text-primary">{{ \Illuminate\Support\Carbon::parse($row->created_at)->diffForHumans() }}</div>
-                                <div class="media-title">{{ $row->name }} {{ $row->last_name }}</div>
-                                <span class="text-small text-muted">{{ limitLength($row->subject,200) }}</span>
-                            </div>
-                        </li>
-                        @endforeach
-
-                    </ul>
-                    <div class="text-center pt-1 pb-1">
-                        <a href="{{ route('admin.discuss.index') }}" class="btn btn-primary btn-lg btn-round">
-                            {{ __lang('view-all') }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-            @endcan
+         
     </div>
 
     @can('access','view_students')

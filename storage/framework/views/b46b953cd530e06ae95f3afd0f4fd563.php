@@ -111,65 +111,12 @@
 
                     </div>
                 </div>
-                <div class="card-body">
-                    <canvas id="myChart" height="182"></canvas>
-                    <div class="statistic-details mt-sm-4">
-                        <div class="statistic-details-item">
-                            <span class="text-muted"><?php echo e($todaySales); ?></span>
-                            <div class="detail-value"><?php echo e(price($todaySum)); ?></div>
-                            <div class="detail-name"><?php echo e(__lang('today-sales')); ?></div>
-                        </div>
-                        <div class="statistic-details-item">
-                            <span class="text-muted"><?php echo e($weekSales); ?></span>
-                            <div class="detail-value"><?php echo e(price($weekSum)); ?></div>
-                            <div class="detail-name"><?php echo e(__lang('week-sales')); ?></div>
-                        </div>
-                        <div class="statistic-details-item">
-                            <span class="text-muted"><?php echo e($monthSales); ?></span>
-                            <div class="detail-value"><?php echo e(price($monthSum)); ?></div>
-                            <div class="detail-name"><?php echo e(__lang('month-sales')); ?></div>
-                        </div>
-                        <div class="statistic-details-item">
-                            <span class="text-muted"><?php echo e($yearSales); ?></span>
-                            <div class="detail-value"><?php echo e(price($yearSum)); ?></div>
-                            <div class="detail-name"><?php echo e(__lang('year-sales')); ?></div>
-                        </div>
-                    </div>
-                </div>
+                 
             </div>
         </div>
         <?php endif; ?>
 
-        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('access','view_discussions')): ?>
-        <div class="col-lg-4 col-md-12 col-12 col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4><?php echo e(__lang('discussions')); ?></h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled list-unstyled-border">
-                        <?php $__currentLoopData = $discuss['paginator']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li class="media">
-                            <img class="mr-3 rounded-circle" width="50" src="<?php echo e(profilePictureUrl($row->picture)); ?>" alt="avatar">
-                            <div class="media-body">
-                                <div class="float-right text-primary"><?php echo e(\Illuminate\Support\Carbon::parse($row->created_at)->diffForHumans()); ?></div>
-                                <div class="media-title"><?php echo e($row->name); ?> <?php echo e($row->last_name); ?></div>
-                                <span class="text-small text-muted"><?php echo e(limitLength($row->subject,200)); ?></span>
-                            </div>
-                        </li>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                    </ul>
-                    <div class="text-center pt-1 pb-1">
-                        <a href="<?php echo e(route('admin.discuss.index')); ?>" class="btn btn-primary btn-lg btn-round">
-                            <?php echo e(__lang('view-all')); ?>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <?php endif; ?>
+         
     </div>
 
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('access','view_students')): ?>
